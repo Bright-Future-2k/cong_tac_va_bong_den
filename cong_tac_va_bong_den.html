@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Button: <button onclick="turnOn()">ON</button>
+<button onclick="turnOff()">OFF</button>
+<p>
+    <label>Button connect Lamp</label><br>
+    <span id="result"></span>
+</p>
+<script>
+    let SwitchButton = function () {
+        this.status = status;
+        this.lamp = ElectricLamp;
+
+        this.switchOff = function () {
+            this.status = false;
+        };
+        this.connectToLamp = function () {
+            if (this.status === true){
+                this.lamp = true;
+            }
+        };
+        this.switchOn = function () {
+            this.status = true;
+        };
+    };
+    let ElectricLamp = function () {
+        this.status = status;
+
+        this.electricLamp = function () {
+            if (this.status){
+                return "The lamp is ON";
+            }else {
+                return "The lamp is OFF";
+            }
+        };
+        this.turnOff = function () {
+            this.status = false;
+        };
+        this.turnOn = function () {
+            this.status = true;
+        };
+    };
+    let button = new SwitchButton();
+    let result = document.getElementById("result");
+    let lamp = new ElectricLamp();
+    function turnOn() {
+        button.switchOn();
+        lamp.turnOn();
+        result.innerHTML = lamp.electricLamp();
+    }
+    function turnOff() {
+        button.switchOff();
+        lamp.turnOff();
+        result.innerHTML = lamp.electricLamp();
+    }
+</script>
+</body>
+</html>
